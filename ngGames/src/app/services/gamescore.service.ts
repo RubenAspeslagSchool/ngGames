@@ -55,6 +55,7 @@ export class GameScoreService {
     const index = data.scores.findIndex(s => s.gameName === gameName);
 
     if (index !== -1) {
+        if (data.scores[index].gameScore >= gameScore ) return // make sure only highests score is saved
       data.scores[index] = { ...data.scores[index], gameScore };
       this.saveData(data);
     }

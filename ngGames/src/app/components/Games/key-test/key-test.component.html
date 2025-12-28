@@ -1,1 +1,36 @@
-<p>key-test works!</p>
+    <div class="typing-game container mt-5">
+      <h2>Typing Challenge</h2>
+      
+      <div class="game-status mb-4">
+        @if(gameOver) {
+            <div class="alert alert-danger">
+            Game Over! Final Score: {{ score }}
+            <button class="btn btn-success ms-3" (click)="startNewGame()">New Game</button>
+            </div>
+        }
+        @else {
+            <div class="alert alert-info">
+            Score: {{ score }} | Streak: {{ currentStreak }}
+            </div>
+        }
+  
+        
+      </div>
+
+      <div class="letters-container d-flex flex-wrap justify-content-center gap-3">
+       <div class="letters-container d-flex flex-wrap justify-content-center gap-3">
+        @for (letter of letters; track letter + $index) {
+            <div 
+            [class]="getLetterClass($index)"
+            class="letter-box">
+            {{ letter }}
+            </div>
+        }
+        </div>
+      </div>
+
+      <div class="mt-4 text-center">
+        <p class="text-muted">Press the matching letter key!</p>
+        <p class="text-warning">Next letter: {{ getNextLetter() }}</p>
+      </div>
+    </div>
